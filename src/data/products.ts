@@ -76,7 +76,7 @@ export const products: Product[] = [
     id: 9,
     title: "Diadema RANGER para Motorola DGP",
     price: 1.99,
-    stock: 30,
+    stock: 10,
     image: "img/diadema-ranger-motorola-dgp.png",
     taxRate: 0.19,
   },

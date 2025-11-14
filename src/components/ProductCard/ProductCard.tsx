@@ -1,11 +1,13 @@
 import type { Product } from "../../data/products";
+import { useCart } from "../../hooks/useCart";
 
 interface Props {
     product: Product;
-    onAddToCart: (product: Product) => void;
+    // onAddToCart: (product: Product) => void;
 }
 
-export const ProductCard = ({ product, onAddToCart }: Props) => {
+export const ProductCard = ({ product }: Props) => {
+    const { addToCart } = useCart();
     return (
         <div className="bg-white rounded-lg shadow p-4 flex flex-col gap-3 border hover:shadow-lg transition-shadow">
             <img src={product.image} alt={product.title} className="w-full h-40 object-contain rounded-md" />
@@ -20,7 +22,7 @@ export const ProductCard = ({ product, onAddToCart }: Props) => {
             )}
             <button
                 disabled={product.stock === 0}
-                onClick={() => onAddToCart(product)}
+                onClick={() => addToCart(product)}
                 aria-label={`Agregar ${product.title} al carrito`}
                 className={`mt-auto px-4 py-2 rounded-lg text-white font-medium transition ${product.stock === 0
                     ? "bg-gray-400 cursor-not-allowed"
