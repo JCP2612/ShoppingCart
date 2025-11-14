@@ -34,7 +34,7 @@ export const CartDrawer = ({ isOpen, onClose }: CartDrawerProps) => {
                     {cart.length === 0 ? (
                         <>
                             <p className="text-gray-500 text-center mt-20">Tu carrito está vacío</p>
-                            <button className="mt-4 w-full bg-blue-500 text-white py-2 rounded" onClick={handleContinueShopping}>Ver productos</button>
+                            <button className="mt-4 w-full bg-blue-500 text-white py-2 rounded" onClick={handleContinueShopping} aria-label="Ver productos">Ver productos</button>
                         </>
                     ) : (
                         <div className="space-y-4">
@@ -45,12 +45,12 @@ export const CartDrawer = ({ isOpen, onClose }: CartDrawerProps) => {
                                         <p className="font-semibold">{item.title}</p>
                                         <p className="text-gray-600">${item.price}</p>
                                         <div className="flex items-center mt-2 gap-2">
-                                            <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="px-2 border rounded">-</button>
+                                            <button onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))} className="px-2 border rounded" aria-label={`Disminuir cantidad de ${item.title}`}>-</button>
                                             <span>{item.quantity}</span>
-                                            <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="px-2 border rounded">+</button>
+                                            <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="px-2 border rounded" aria-label={`Aumentar cantidad de ${item.title}`}>+</button>
                                         </div>
                                     </div>
-                                    <button onClick={() => removeFromCart(item.id)} className="text-red-500">Eliminar</button>
+                                    <button onClick={() => removeFromCart(item.id)} className="text-red-500" aria-label={`Eliminar ${item.title} del carrito`}>Eliminar</button>
                                 </div>
 
                             ))}
@@ -59,7 +59,7 @@ export const CartDrawer = ({ isOpen, onClose }: CartDrawerProps) => {
                 </div>
                 {cart.length > 0 && (
                     <div className="pt-4 mt-4 border-t flex-shrink-0">
-                        <button onClick={() => { navigate('/checkout'); onClose(); }} className="w-full block text-center bg-green-500 text-white py-2 rounded">
+                        <button onClick={() => { navigate('/checkout'); onClose(); }} className="w-full block text-center bg-green-500 text-white py-2 rounded" aria-label="Ir a pagar">
                             Ir a pagar
                         </button>
                     </div>

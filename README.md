@@ -1,73 +1,93 @@
-# React + TypeScript + Vite
+# Shopping Cart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una aplicación de carrito de compras moderna construida con React, TypeScript y Vite.
 
-Currently, two official plugins are available:
+## Frameworks y Tecnologías
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19** - Librería de UI con soporte para el último estándar JavaScript
+- **TypeScript** - Tipado estático para JavaScript
+- **Vite 7** - Build tool y dev server ultrarrápido
+- **Tailwind CSS** - Framework CSS utility-first para estilos
+- **React Router 7** - Enrutamiento de aplicaciones SPA
+- **Heroicons** - Librería de iconos de alta calidad
+- **ESLint** - Linting y análisis de código estático
 
-## React Compiler
+## Estructura del Proyecto
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+shoppingcart/
+├── src/
+│   ├── components/              # Componentes reutilizables
+│   │   ├── CartDrawer/          # Drawer del carrito
+│   │   ├── Checkout/            # Página de checkout
+│   │   ├── Header/              # Encabezado de la aplicación
+│   │   ├── ProductCard/         # Tarjeta de producto
+│   │   └── ProductList/         # Lista de productos
+│   ├── context/                 # Context API para estado global
+│   │   ├── CartContext.tsx      # Contexto del carrito
+│   │   ├── CartProvider.tsx     # Proveedor del contexto
+│   │   └── types.tsx            # Tipos TypeScript
+│   ├── hooks/                   # Custom hooks
+│   │   ├── useCart.ts           # Hook para gestionar carrito
+│   │   └── usePriceCalculation.ts # Hook para cálculos de precio
+│   ├── pages/                   # Páginas de la aplicación
+│   │   ├── Home.tsx             # Página de inicio
+│   │   └── Checkout.tsx         # Página de checkout
+│   ├── data/
+│   │   └── products.ts          # Datos de productos
+│   ├── assets/                  # Archivos estáticos
+│   ├── App.tsx                  # Componente raíz
+│   ├── main.tsx                 # Punto de entrada
+│   ├── App.css                  # Estilos de la aplicación
+│   └── index.css                # Estilos globales
+├── public/                      # Archivos públicos estáticos
+├── package.json                 # Dependencias del proyecto
+├── vite.config.ts               # Configuración de Vite
+├── tailwind.config.js           # Configuración de Tailwind CSS
+├── tsconfig.json                # Configuración de TypeScript
+└── eslint.config.js             # Configuración de ESLint
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Instalación
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerrequisitos
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Node.js 18+
+- npm o yarn
+
+### Pasos
+
+1. **Clonar el repositorio**
+
+```bash
+git clone https://github.com/JCP2612/ShoppingCart
+cd shoppingcart
 ```
+
+2. **Instalar dependencias**
+
+```bash
+npm install
+```
+
+## Ejecución
+
+### Modo Desarrollo
+
+Inicia el servidor de desarrollo:
+
+```bash
+npm run dev
+```
+
+La aplicación estará disponible en `http://localhost:5173`
+
+## Características
+
+- ✨ Gestión de carrito con Context API
+- 🛍️ Catálogo de productos dinámico
+- 💰 Cálculo automático de precios y totales
+- 🎨 Interfaz moderna con Tailwind CSS
+- 📱 Diseño responsivo
+- ⚡ HMR para desarrollo rápido
+- 🔒 Tipado completo con TypeScript
